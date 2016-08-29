@@ -1,24 +1,16 @@
-/*jshint node:true*/
-
-// To use it create some files under `mocks/`
-// e.g. `server/mocks/ember-hamsters.js`
-//
-// module.exports = function(app) {
-//   app.get('/ember-hamsters', function(req, res) {
-//     res.send('hello');
-//   });
-// };
+const bodyParser = require('body-parser');
 
 module.exports = function(app) {
-  var globSync   = require('glob').sync;
-  var mocks      = globSync('./mocks/**/*.js', { cwd: __dirname }).map(require);
-  var proxies    = globSync('./proxies/**/*.js', { cwd: __dirname }).map(require);
 
-  // Log proxy requests
-  var morgan  = require('morgan');
-  app.use(morgan('dev'));
+  app.use(bodyParser.urlencoded({ extended: true }));
 
-  mocks.forEach(function(route) { route(app); });
-  proxies.forEach(function(route) { route(app); });
+  app.get('/api/codes', function (req, res) {
+    return res.status(200).send({
+      codes: [
+        { id: 1, description: 'Obama Nuclear Missile Launching Code is: lovedronesandthensa' },
+        { id: 2, description: 'Putin Nuclear Missile Launching Code is: invasioncoolashuntingshirtless' }
+      ]
+    });
+  });
 
 };
