@@ -6,9 +6,21 @@ module.exports = function(app) {
 
   app.get('/api/codes', function (req, res) {
     return res.status(200).send({
-      codes: [
-        { id: 1, description: 'Obama Nuclear Missile Launching Code is: lovedronesandthensa' },
-        { id: 2, description: 'Putin Nuclear Missile Launching Code is: invasioncoolashuntingshirtless' }
+      "data": [
+        {
+          "id": "1",
+          "type": "codes",
+          "attributes": {
+            "description": "Obama Nuclear Missile Launching Code is: lovedronesandthensa"
+          }
+        },
+        {
+          "id": "2",
+          "type": "codes",
+          "attributes": {
+            "description": "Putin Nuclear Missile Launching Code is: invasioncoolashuntingshirtless"
+          }
+        }
       ]
     });
   });
