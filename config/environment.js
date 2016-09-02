@@ -8,14 +8,17 @@ module.exports = function(environment) {
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+        // FEATURE flags are only available in canary builds
+        // enableAllFeatures: true,
+        // contentSecurityPolicy: {
+        //   'style-src': "'self' 'unsafe-inline'",
+        //   'script-src': "'self' 'unsafe-eval' 127.0.0.1:35729",
+        //   'connect-src': "'self' ws://127.0.0.1:35729"
+        // }
       }
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
     }
   };
 
