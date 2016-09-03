@@ -18,4 +18,12 @@ module.exports = function(app) {
     });
   });
 
+  app.post('/token', function(req, res) {
+    if (req.body.username == 'login' && req.body.password == 'ok') {
+      res.send({ access_token: "these staff" });
+    } else {
+      res.status(400).send({ error: "invalid_grant" });
+    }
+  });
+
 };
