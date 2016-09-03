@@ -8,7 +8,7 @@ export default DS.RESTAdapter.extend({
 
   headers: Ember.computed('authManager.accessToken', function() {
     return {
-      "Authorization": 'HolyMoly ${this.get("authManager.accessToken")}'
+      "Authorization": `Bearer ${this.get("authManager.accessToken")}`
     };
   })
 

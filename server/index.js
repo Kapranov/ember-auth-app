@@ -6,7 +6,7 @@ module.exports = function(app) {
 
   app.get('/api/codes', function (req, res) {
 
-    if (req.headers['authorization'] !== "HolyMoly these staff") {
+    if (req.headers['authorization'] !== "Bearer some bs") {
       return res.status(401).send('Unauthorized');
     }
 
@@ -19,11 +19,13 @@ module.exports = function(app) {
   });
 
   app.post('/token', function(req, res) {
-    if (req.body.username == 'login' && req.body.password == 'ok') {
-      res.send({ access_token: "these staff" });
+
+    if (req.body.username == 'holymoly' && req.body.password == 'somebs') {
+      res.send({ access_token: "some bs" });
     } else {
       res.status(400).send({ error: "invalid_grant" });
     }
+
   });
 
 };
