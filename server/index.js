@@ -5,6 +5,11 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.get('/api/codes', function (req, res) {
+
+    if (req.headers['authorization'] !== "Bearer some bs") {
+      return res.status(401).send('Unauthorized');
+    }
+
     return res.status(200).send({
       "data": [
         {
@@ -23,6 +28,16 @@ module.exports = function(app) {
         }
       ]
     });
+  });
+
+  app.post('/token', function(req, res) {
+
+    if (req.body.username == 'holymoly' && req.body.password == 'somebs') {
+      res.send({ access_token: "some bs" });
+    } else {
+      res.status(400).send({ error: "invalid_grant" });
+    }
+
   });
 
 };
