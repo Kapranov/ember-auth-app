@@ -6,7 +6,7 @@ module.exports = function(app) {
 
   app.get('/api/codes', function (req, res) {
 
-    if (req.headers['authorization'] !== "holy moly these staff") {
+    if (req.headers['authorization'] !== "HolyMoly these staff") {
       return res.status(401).send('Unauthorized');
     }
 
