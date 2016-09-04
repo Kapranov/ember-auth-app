@@ -1,5 +1,3 @@
-//import DS from 'ember-data';
-//import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import RESTAdapter from 'ember-data/adapters/rest';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
