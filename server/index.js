@@ -40,4 +40,7 @@ module.exports = function(app) {
 
   });
 
+  app.get('/api/users', function (req, res) {
+    return res.status(200).send({ user: { id: 1, email: 'lugatex@yahoo.com' }});
+  });
 };
