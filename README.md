@@ -240,7 +240,8 @@ Finally, we can launch our app!
 > default. I personally find it silly to welcome someone to Ember with a
 > bunch of red stuff in their console "by default". In order to remove
 > these warnings, please read [How to Modify the Content Security Policy
-> on a new Ember CLI > app](https://emberigniter.com/modify-content-security-policy-on-new-ember-cli-app/).
+> on a new Ember CLI >
+> app](https://github.com/Kapranov/ember-auth-app/blob/master/modify_content_security_policy.md).
 
 ### Protecting the State secrets from Evil
 
