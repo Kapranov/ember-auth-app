@@ -192,6 +192,7 @@ Great. We now open ``index.js`` and make it look exactly like this:
     app.use(bodyParser.urlencoded({ extended: true }));
 
     app.get('/api/codes', function (req, res) {
+
       return res.status(200).send({
         codes: [
           { id: 1, description: 'Obama Nuclear Missile Launching Code is: lovedronesandthensa' },
@@ -204,7 +205,7 @@ Great. We now open ``index.js`` and make it look exactly like this:
 ```
 
 In order to load that data into our app, let’s update our
-[custom adapter](https://github.com/kapranov).
+[custom adapter](https://github.com/Kapranov/ember-auth-app/blob/master/custom_adapter.md).
 Simply adding the namespace for our API will suffice.
 
 ```javascript
