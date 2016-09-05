@@ -44,7 +44,7 @@ more details
 
 Specify what it takes to deploy your app.
 
-## Part I - Implementing Authentication with Ember Services:w
+## Part I - Implementing Authentication with Ember Services
 
 Security is an essential aspect of most real-world applications.
 
