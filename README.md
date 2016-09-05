@@ -44,6 +44,8 @@ more details
 
 Specify what it takes to deploy your app.
 
+## Part I.
+
 ### Implementing Authentication with Ember Services
 
 Security is an essential aspect of most real-world applications.
@@ -508,3 +510,5 @@ Ember authorization solution. Curious about the code?
 
 I hope this was helpful! Did you manage to run the app? Any roadblocks
 along the way? Let me know everything in the comments below!
+
+## Part II.
