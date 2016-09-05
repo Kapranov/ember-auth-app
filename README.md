@@ -342,7 +342,7 @@ And the login page component…
   {{link-to "Secret codez here" 'secret'}}
 
   <h2>Login page</h2>
-  <p>Use login / ok</p>
+  <p>Use holymoly / somebs</p>
 
   <form {{action 'authenticate' on='submit'}}>
     {{input value=login placeholder='Login'}}<br>
@@ -498,13 +498,13 @@ Our sample app is lacking proper:
 This might be stating the obvious; if you ever heard the advice
 don’t roll your own authentication, follow it.
 
-We don’t have to reinvent the wheel! In part 2, we will meet
+We don’t have to reinvent the wheel! In next part, we will meet
 [Ember Simple Auth](http://ember-simple-auth.com/): a nifty auth
 framework.
 
 Still, it was important to understand the underlying mechanism of an
 Ember authorization solution. Curious about the code?
-[It’s up on Github!](htpp://github.com/kapranov).
+[It’s up on Github!](https://github.com/Kapranov/ember-auth-app).
 
 I hope this was helpful! Did you manage to run the app? Any roadblocks
 along the way? Let me know everything in the comments below!
