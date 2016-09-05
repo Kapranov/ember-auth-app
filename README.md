@@ -172,7 +172,7 @@ Cool, but we have no actual data yet to show!
 
 ### Loading backend data
 
-We will create a very [simple and quick backend server](https://github.com/kapranov)
+We will create a very [simple and quick backend server](https://github.com/Kapranov/ember-auth-app/blob/master/simple_and_quick_backend_server.md)
 
 ```bash
   $ ember generate server
