@@ -145,7 +145,7 @@ the ``secret.hbs`` template.
 
 > Basically, the template will be used as a shim layer,
 > [a technique discussed
-> here](https://raw.githubusercontent.com/Kapranov/ember-auth-app/master/should_we_use_controllers_in_ember.md)
+> here](https://github.com/Kapranov/ember-auth-app/blob/master/should_we_use_controllers_in_ember.md)
 > whereby we only use templates to include a "top-level" component.
 
 ```javascript
