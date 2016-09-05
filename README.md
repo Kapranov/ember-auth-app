@@ -510,3 +510,52 @@ I hope this was helpful! Did you manage to run the app? Any roadblocks
 along the way? Let me know everything in the comments below!
 
 ## Part II - Real-world Authentication with Ember Simple Auth
+
+Getting authentication up and running in Ember can be overwhelming.
+
+Now that we understand how Services and token-based authentication work,
+we are ready to get started with a simple –yet powerful– framework
+called [Ember Simple Auth](http://ember-simple-auth.com/).
+
+In this episode, we will enhance our existing "Ember-Auth-App" application.
+
+Good news: since we essentially created a dumbed-down version of Ember
+Simple Auth (using the same concepts), the upgrade will be very smooth.
+
+### Using Ember Simple Auth
+
+Let’s begin by installing the add-on:
+
+```bash
+  $ ember install ember-simple-auth
+```
+
+That’s it. We are ready to tackle the upgrade of our sample app!
+
+> If you haven’t gone through part 1 but would still like to follow this
+> guide, make sure you get the code:
+> ```bash
+>   $ git clone https://github.com/Kapranov/ember-auth-app.git
+>   $ git checkout master
+> ```
+> Some files listed below will be modified substantially. Most of the
+> time you can copy that code onto your own app, replacing previous
+> content.
+
+### Ember-Auth-App version rest-auth
+
+To recap: Ember-Auth-App is a silly app that displays nuclear missile
+activation codes only to logged in users. It requests an OAuth2 token
+from a [small embedded web server](https://github.com/Kapranov/ember-auth-app/blob/master/simple_and_quick_backend_server.md)
+in order to show the codes.
+
+The core concept in the authentication mechanism is the Ember Service.
+In Ember-Auth-App we called it ``authManager``. Ember Simple Auth (ESA)
+has its own service, named ``session``. We are going drop ours and use
+ESA’s – but we’ll keep the ``authManager`` variable name.
+
+Bust the service!
+
+```bash
+  $ rm app/services/auth-manager.js
+```
