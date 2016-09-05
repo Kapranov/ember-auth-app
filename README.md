@@ -106,7 +106,7 @@ The next step is to include our ``secret-page`` component in
 the ``secret.hbs`` template.
 
 > Basically, the template will be used as a shim layer,
-> [https://github.com/kapranov](a technique discussed here)
+> [a technique discussed here](https://github.com/kapranov)
 > whereby we only use templates to include a "top-level" component.
 
 ```javascript
