@@ -621,9 +621,9 @@ Auth!
 >
 > ```javascript
 >   // app/authenticators/oauth2.js
->     export default OAuth2PasswordGrant.extend({
->       serverTokenEndpoint: "/path/to/token"
->     });
+>   export default OAuth2PasswordGrant.extend({
+>     serverTokenEndpoint: "/path/to/token"
+>   });
 
 At the moment, if no token is available when the ``secret`` route is
 accessed, a ``401 Unauthorized`` error will be thrown (you can probably
@@ -664,7 +664,7 @@ sent an ``Authorization`` header. Again, ESA takes care of this for us:
 ```javascript
   // app/adapter/application.js
 
-  import DS from 'ember-data';
+  import RESTAdapter from 'ember-data/adapters/rest';
   import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
   export default DS.RESTAdapter.extend(DataAdapterMixin, {
@@ -737,6 +737,7 @@ called ``currentUser``:
 ```javascript
   // app/services/session.js
 
+  import Ember from 'ember';
   import DS from 'ember-data';
   import ESASession from "ember-simple-auth/services/session";
 
@@ -768,8 +769,6 @@ quickly create a dummy response, which for now will live at
 ```javascript
   // server/index.js
 
-  //...
-
   app.get('/api/users', function (req, res) {
     return res.status(200).send({ user: { id: 1, email: 'lugatex@yahoo.com' }});
   });
@@ -788,7 +787,7 @@ the secret page:
     Logged in as {{authManager.currentUser.email}}
   {{/if}}
 
-  <h1>OMG DA CODEZ!!</h1>
+  <h1>Ember Auth App!!</h1>
 
   <ul>
   {{#each model as |code|}}
@@ -802,6 +801,8 @@ page component:
 
 ```javascript
   // app/components/secret-page.js
+
+  import Ember from 'ember';
 
   export default Ember.Component.extend({
     authManager: Ember.inject.service('session')
@@ -820,7 +821,7 @@ this has been useful enough for you to apply on your projects!
 Remember the [source code is on Github](https://github.com/Kapranov/ember-auth-app):
 
 * branch  ``master`` has the app finished in part 1
-* branch ``rest/jsonapi`` has the app finished here!
+* branch ``rest`` ``jsonapi`` ``rest-auth`` ``jsonapi-auth`` has the app finished here!
 
 For further information and docs, do head over to the Ember Simple Auth
 [website](http://ember-simple-auth.com/).
