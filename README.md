@@ -132,7 +132,7 @@ Cool, but we have no actual data yet to show!
 
 ### Loading backend data
 
-We will create a very [https://github.com/kapranov](simple and quick backend server)
+We will create a very [simple and quick backend server](https://github.com/kapranov)
 
 ```bash
   $ ember generate server
@@ -164,5 +164,5 @@ Great. We now open ``index.js`` and make it look exactly like this:
 ```
 
 In order to load that data into our app, let’s update our
-[https://github.com/kapranov](custom
-adapter). Simply adding the namespace for our API will suffice.
+[custom adapter](https://github.com/kapranov).
+Simply adding the namespace for our API will suffice.
