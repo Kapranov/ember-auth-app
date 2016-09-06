@@ -45,6 +45,7 @@ more details
 Specify what it takes to deploy your app.
 
 <a href="https://emberigniter.com/">![Logo](https://emberigniter.com/images/logo.png)</a>
+
 [Original article by Frank Treacy from Ember Igniter Part 1](https://emberigniter.com/implementing-authentication-with-ember-services/)
 
 vs
