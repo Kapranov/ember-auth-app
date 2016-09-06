@@ -60,7 +60,7 @@ Security is an essential aspect of most real-world applications.
 
 At some point, apps need to be partially (or entirely) protected –
 typically enforcing a user to be logged in. When the user tries to
-access a specific protected ``URL``, the app will prompt for credentials.
+access a specific protected **``URL``**, the app will prompt for credentials.
 
 These credentials can be checked against a number of identity providers,
 usually backend servers but also services like Facebook, Google, Github
