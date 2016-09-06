@@ -44,7 +44,7 @@ more details
 
 Specify what it takes to deploy your app.
 
-<a href="https://emberigniter.com/">![Logo](https://emberigniter.com/images/logo.png)</a> Ember Igniter
+<a href="https://emberigniter.com/">![Logo](https://emberigniter.com/images/logo.png)</a> Ember Igniter Learn Ember 2.x, Ember Data, Ember CLI – only the latest! By Frank Treacy
 
 [Original article by Frank Treacy from Ember Igniter Part 1](https://emberigniter.com/implementing-authentication-with-ember-services/)
 
