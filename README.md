@@ -91,6 +91,7 @@ These objects can:
 
 **1**. keep state around for the duration of an app
       (state won’t survive page-reloads),
+
 **2**. be used from anywhere in the application
 
 As such, they are ideal for cross-cutting concerns like logging or
