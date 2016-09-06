@@ -1,4 +1,4 @@
-# Ember-Auth-App
+# Ember Authentication Application
 
 <table>
   <tr>
@@ -24,14 +24,12 @@ You will need the following things properly installed on your computer.
 * [PhantomJS](http://phantomjs.org/)
 
 ## Installation
-
 * `git clone <repository-url>` this repository
 * change into the new directory
 * `npm install`
 * `bower install`
 
 ## Running / Development
-
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
@@ -41,12 +39,10 @@ Make use of the many generators for code, try `ember help generate` for
 more details
 
 ### Running Tests
-
 * `ember test`
 * `ember test --server`
 
 ### Building
-
 * `ember build` (development)
 * `ember build --environment production` (production)
 
@@ -86,10 +82,10 @@ it won’t overwhelm us or look like magic.
 Services are objects that live throughout the span of an Ember
 application. Yes, they are singletons.
 
-An ``Ember.Service`` is nothing more than an ``Ember.Object``.
+An **``Ember.Service``** is nothing more than an **``Ember.Object``**.
 The name is used as convention. If services are placed in a specific
-Ember CLI folder (``app/services``) they will be automatically registered
-and available for injection in any other Ember object.
+Ember CLI folder (**``app/services``**) they will be automatically
+registered and available for injection in any other Ember object.
 
 These objects can:
 
@@ -123,7 +119,7 @@ Our sample app will be called ember-auth-app.
 
 Its home page lists secrets that users can only access when
 authenticated. If the user is not logged in, he will be redirected to
-the ``/login`` page.
+the **``/login``** page.
 
 First off, we will create a screen to display the secret codes.
 
@@ -136,7 +132,7 @@ mechanism.
 Let’s start by generating our app and all necessary resources we can
 think of! Fire up a terminal and run the following commands:
 
-```bash
+```
   $ ember new ember-auth-app
   $ cd ember-auth-app
   $ ember generate route secret --path "/"
@@ -150,15 +146,15 @@ think of! Fire up a terminal and run the following commands:
 
 Done!
 
-The next step is to include our ``secret-page`` component in
-the ``secret.hbs`` template.
+The next step is to include our **``secret-page``** component in
+the **``secret.hbs``** template.
 
 > Basically, the template will be used as a shim layer,
 > [a technique discussed
 > here](https://github.com/Kapranov/ember-auth-app/blob/master/should_we_use_controllers_in_ember.md)
 > whereby we only use templates to include a "top-level" component.
 
-```javascript
+```
   {{! app/templates/secret.hbs }}
 
   {{secret-page model=model}}
@@ -166,7 +162,7 @@ the ``secret.hbs`` template.
 
 And proceed to build our secret list:
 
-```javascript
+```
   {{! app/templates/components/secret-page.hbs }}
 
   <h1>Ember Auth App!!</h1>
@@ -184,7 +180,7 @@ Cool, but we have no actual data yet to show!
 
 We will create a very [simple and quick backend server](https://github.com/Kapranov/ember-auth-app/blob/master/simple_and_quick_backend_server.md)
 
-```bash
+```
   $ ember generate server
   $ npm install
   $ npm install body-parser --save-dev
@@ -192,7 +188,7 @@ We will create a very [simple and quick backend server](https://github.com/Kapra
 
 Great. We now open ``index.js`` and make it look exactly like this:
 
-```javascript
+```
   // server/index.js
 
   const bodyParser = require('body-parser');
@@ -218,7 +214,7 @@ In order to load that data into our app, let’s update our
 [custom adapter](https://github.com/Kapranov/ember-auth-app/blob/master/custom_adapter.md).
 Simply adding the namespace for our API will suffice.
 
-```javascript
+```
   // app/adapters/application.js
 
   export default DS.RESTAdapter.extend({
@@ -226,9 +222,9 @@ Simply adding the namespace for our API will suffice.
   });
 ```
 
-All ready now to load them in our route’s ``model()`` hook!
+All ready now to load them in our route’s **``model()``** hook!
 
-```javascript
+```
   // app/routes/secret.js
 
   export default Ember.Route.extend({
@@ -240,24 +236,22 @@ All ready now to load them in our route’s ``model()`` hook!
 
 Finally, we can launch our app!
 
-```bash
+```
   $ ember server
 ```
 
-``http://localhost:4200`` should display our secrets!
+**``http://localhost:4200``** should display our secrets!
 
 > Ember CLI keeps including the Content Security Policies add-on by
 > default. I personally find it silly to welcome someone to Ember with a
 > bunch of red stuff in their console "by default". In order to remove
-> these warnings, please read [How to Modify the Content Security Policy
-> on a new Ember CLI >
-> app](https://github.com/Kapranov/ember-auth-app/blob/master/modify_content_security_policy.md).
+> these warnings, please read [How to Modify the Content Security Policy on a new Ember CLI app](https://github.com/Kapranov/ember-auth-app/blob/master/modify_content_security_policy.md).
 
 ### Protecting the State secrets from Evil
 
 First things first, let’s protect data at the source:
 
-```javascript
+```
   // server/index.js
 
   const bodyParser = require('body-parser');
@@ -283,17 +277,17 @@ First things first, let’s protect data at the source:
   };
 ```
 
-The ``/api/codes`` endpoint is now shielded against intruders. Any
+The **``/api/codes``** endpoint is now shielded against intruders. Any
 client wanting to access the secret codes must prove, by way of a token,
 that he possesses the appropriate clearence level.
 
 That makes sense! The question is, how does a user get hold of an access
 token?
 
-We will introduce an endpoint named ``/token`` through which clients can
+We will introduce an endpoint named **``/token``** through which clients can
 obtain a token (in order to query the API):
 
-```javascript
+```
   // server/index.js
 
   const bodyParser = require('body-parser');
@@ -331,14 +325,14 @@ obtain a token (in order to query the API):
 
 It would have been strange for this ludicrous sample app to have a
 sensible login/password combo! That’s right, anyone can obtain an access
-token (the same token) with ``login/ok``.
+token (the same token) with **``holymoly/somebs``**.
 
 On to Ember-land, my friends!
 
 The challenge now is to create the user flow. Same as with
-``secret-page``, we must create the shim layer for ``login``.
+**``secret-page``**, we must create the shim layer for **``login``**.
 
-```javascript
+```
   {{! app/templates/login.hbs }}
 
   {{login-page}}
@@ -346,7 +340,7 @@ The challenge now is to create the user flow. Same as with
 
 And the login page component…
 
-```javascript
+```
   {{! app/templates/components/login-page.hbs }}
 
   {{link-to "Secret codez here" 'secret'}}
@@ -363,10 +357,10 @@ And the login page component…
 
 This page will be used for username and password submission.
 
-The ``authenticate`` action will have to be declared in the component
+The **``authenticate``** action will have to be declared in the component
 itself:
 
-```javascript
+```
   // app/components/login-page.js
 
   export default Ember.Component.extend({
@@ -387,21 +381,21 @@ itself:
   });
 ```
 
-Whoa! ``authManager`` ?! What’s that?
+Whoa! **``authManager``** ?! What’s that?
 
 Remember we said authentication was a cross-cutting concern? We will use
 an Ember Service to keep functions and state related to authentication.
 
-Above, we injected ``authManager`` to which we delegate the
-``authenticate()`` method. Let’s see what’s all this about:
+Above, we injected **``authManager``** to which we delegate the
+**``authenticate()``** method. Let’s see what’s all this about:
 
-```bash
+```
   $ ember generate service auth-manager
 ```
 
 We make it look like this…
 
-```javascript
+```
   // app/services/auth-manager.js
 
   export default Ember.Service.extend({
@@ -427,17 +421,17 @@ We make it look like this…
   });
 ```
 
-The ``authenticate()`` method will call the backend at ``/token``.
-Upon successful authentication, it will store the token in the
-``accessToken`` property to use it in every subsequent backend request.
-We will see how this works in a minute.
+The **``authenticate()``** method will call the backend at
+**``/token``**. Upon successful authentication, it will store
+the token in the ``accessToken`` property to use it in every
+subsequent backend request. We will see how this works in a minute.
 
-There’s also the ``isAuthenticated`` computed property that is a
-boolean-ized version of ``accessToken``. Handy for using in templates.
+There’s also the **``isAuthenticated``** computed property that is a
+boolean-ized version of **``accessToken``**. Handy for using in templates.
 
-Lastly, ``invalidate()`` simply resets the access token. Any further
-requests to the API will result in a ``01 Unauthorized`` response since
-``null`` is an invalid token.
+Lastly, **``invalidate()``** simply resets the access token. Any further
+requests to the API will result in a **``01 Unauthorized``** response since
+**``null``** is an invalid token.
 
 If we were to run our app at this point, we wouldn’t be able to retrieve
 the secret codes. Why? Well, we are not yet sending the access token in
@@ -446,7 +440,7 @@ our API requests.
 As our data requests go through Ember Data, we will upgrade our adapter
 to make sure the access token is included in the XHR request headers:
 
-```javascript
+```
   // app/adapter/application.js
 
   export default DS.RESTAdapter.extend({
@@ -466,12 +460,12 @@ to make sure the access token is included in the XHR request headers:
 if we logged in (in other words, received a token) we are now able to see
 the secret codes! Isn’t that super cool?!
 
-For completeness’ sake, we will add the final touch. As visiting ``/``
-initially will have us logged out, we need to catch that ``401 Unauthorized``
-and turn it into a redirect to ``/login``. The ``application`` route is
-a reasonable place to do that:
+For completeness’ sake, we will add the final touch. As visiting
+**``/``** initially will have us logged out, we need to catch that
+**``401 Unauthorized``** and turn it into a redirect to **``/login``**.
+The **``application``** route is a reasonable place to do that:
 
-```javascript
+```
   // app/routes/application.js
 
   export default Ember.Route.extend({
@@ -485,7 +479,7 @@ a reasonable place to do that:
   });
 ```
 
-Lets ``ember server`` again and check out our app!
+Lets **``ember server``** again and check out our app!
 
 If login succeeded (read the alert message) click on the top link to
 access the secrets.
