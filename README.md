@@ -1,12 +1,6 @@
 # Ember Authentication Application
 
-<table>
-  <tr>
-    <td>
-      <a href="http://emberjs.com/">![Logo](https://cloud.githubusercontent.com/assets/119117/14939460/966c23d0-0f0d-11e6-89b1-59d673ac28ee.png)</a>
-    </td>
-  </tr>
-</table>
+<a href="http://emberjs.com/">![Logo](https://cloud.githubusercontent.com/assets/119117/14939460/966c23d0-0f0d-11e6-89b1-59d673ac28ee.png)</a>
 
 This README outlines the details of collaborating on this Ember
 application.
