@@ -676,7 +676,7 @@ and sent an **``Authorization``** header. Again, ESA takes care of this for us:
   });
 ```
 
-Which brings us to **``Authorizer``s**. What are they?
+Which brings us to **``Authorizer``**s. What are they?
 
 > Authorizers use the session data aqcuired by an authenticator when
 > authenticating the session to construct authrorization data that can
