@@ -4,6 +4,7 @@
   <tr>
     <td>
       <img src="https://cloud.githubusercontent.com/assets/119117/14939460/966c23d0-0f0d-11e6-89b1-59d673ac28ee.png" />
+      <a href="http://emberjs.com/">![Logo](https://cloud.githubusercontent.com/assets/119117/14939460/966c23d0-0f0d-11e6-89b1-59d673ac28ee.png)</a>
     </td>
   </tr>
 </table>
