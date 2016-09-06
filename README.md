@@ -132,7 +132,7 @@ mechanism.
 Let’s start by generating our app and all necessary resources we can
 think of! Fire up a terminal and run the following commands:
 
-```
+```bash
   $ ember new ember-auth-app
   $ cd ember-auth-app
   $ ember generate route secret --path "/"
@@ -154,7 +154,7 @@ the **``secret.hbs``** template.
 > here](https://github.com/Kapranov/ember-auth-app/blob/master/should_we_use_controllers_in_ember.md)
 > whereby we only use templates to include a "top-level" component.
 
-```
+```handlebars
   {{! app/templates/secret.hbs }}
 
   {{secret-page model=model}}
@@ -162,7 +162,7 @@ the **``secret.hbs``** template.
 
 And proceed to build our secret list:
 
-```
+```handlebars
   {{! app/templates/components/secret-page.hbs }}
 
   <h1>Ember Auth App!!</h1>
@@ -180,7 +180,7 @@ Cool, but we have no actual data yet to show!
 
 We will create a very [simple and quick backend server](https://github.com/Kapranov/ember-auth-app/blob/master/simple_and_quick_backend_server.md)
 
-```
+```bash
   $ ember generate server
   $ npm install
   $ npm install body-parser --save-dev
@@ -188,7 +188,7 @@ We will create a very [simple and quick backend server](https://github.com/Kapra
 
 Great. We now open ``index.js`` and make it look exactly like this:
 
-```
+``` javascript
   // server/index.js
 
   const bodyParser = require('body-parser');
