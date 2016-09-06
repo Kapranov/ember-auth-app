@@ -1,5 +1,13 @@
 # Ember-auth-app
 
+<table>
+  <tr>
+    <td>
+      <img src="https://cloud.githubusercontent.com/assets/119117/14939460/966c23d0-0f0d-11e6-89b1-59d673ac28ee.png" />
+    </td>
+  </tr>
+</table>
+
 This README outlines the details of collaborating on this Ember
 application. A short introduction of this app could easily go here.
 
