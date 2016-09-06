@@ -209,6 +209,8 @@ Simply adding the namespace for our **API** will suffice.
 
 ```js
   // app/adapters/application.js
+  import Ember from 'ember';
+  import DS from 'ember-data';
 
   export default DS.RESTAdapter.extend({
     namespace: 'api'
@@ -219,6 +221,7 @@ All ready now to load them in our route’s **``model()``** hook!
 
 ```js
   // app/routes/secret.js
+  import Ember from 'ember';
 
   export default Ember.Route.extend({
     model() {
@@ -306,7 +309,7 @@ obtain a token (in order to query the **API**):
 
     app.post('/token', function(req, res) {
 
-      if (req.body.username == 'login' && req.body.password == 'ok') {
+      if (req.body.username == 'holymoly' && req.body.password == 'somebs') {
         res.send({ access_token: "some bs" });
       } else {
         res.status(400).send({ error: "invalid_grant" });
@@ -355,6 +358,7 @@ itself:
 
 ```js
   // app/components/login-page.js
+  import Ember from 'ember';
 
   export default Ember.Component.extend({
 
@@ -390,6 +394,7 @@ We make it look like this…
 
 ```js
   // app/services/auth-manager.js
+  import Ember from 'ember';
 
   export default Ember.Service.extend({
 
@@ -435,6 +440,8 @@ to make sure the **access token** is included in the **XHR request headers**:
 
 ```js
   // app/adapter/application.js
+  import Ember from 'ember';
+  import DS from 'ember-data';
 
   export default DS.RESTAdapter.extend({
     namespace: 'api',
@@ -460,11 +467,12 @@ The **``application``** route is a reasonable place to do that:
 
 ```js
   // app/routes/application.js
+  import Ember from 'ember';
 
   export default Ember.Route.extend({
 
     actions: {
-      error: function(reason, transition) {
+      error: function() {
         this.transitionTo('/login');
         return false;
       }
