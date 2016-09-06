@@ -214,7 +214,7 @@ In order to load that data into our app, let’s update our
 [custom adapter](https://github.com/Kapranov/ember-auth-app/blob/master/custom_adapter.md).
 Simply adding the namespace for our API will suffice.
 
-```
+``` javascript
   // app/adapters/application.js
 
   export default DS.RESTAdapter.extend({
@@ -224,7 +224,7 @@ Simply adding the namespace for our API will suffice.
 
 All ready now to load them in our route’s **``model()``** hook!
 
-```
+``` javascript
   // app/routes/secret.js
 
   export default Ember.Route.extend({
@@ -236,7 +236,7 @@ All ready now to load them in our route’s **``model()``** hook!
 
 Finally, we can launch our app!
 
-```
+```bash
   $ ember server
 ```
 
@@ -251,7 +251,7 @@ Finally, we can launch our app!
 
 First things first, let’s protect data at the source:
 
-```
+``` javascript
   // server/index.js
 
   const bodyParser = require('body-parser');
@@ -287,7 +287,7 @@ token?
 We will introduce an endpoint named **``/token``** through which clients can
 obtain a token (in order to query the API):
 
-```
+``` javascript
   // server/index.js
 
   const bodyParser = require('body-parser');
@@ -332,7 +332,7 @@ On to Ember-land, my friends!
 The challenge now is to create the user flow. Same as with
 **``secret-page``**, we must create the shim layer for **``login``**.
 
-```
+```handlebars
   {{! app/templates/login.hbs }}
 
   {{login-page}}
@@ -340,7 +340,7 @@ The challenge now is to create the user flow. Same as with
 
 And the login page component…
 
-```
+```handlebars
   {{! app/templates/components/login-page.hbs }}
 
   {{link-to "Secret codez here" 'secret'}}
@@ -360,7 +360,7 @@ This page will be used for username and password submission.
 The **``authenticate``** action will have to be declared in the component
 itself:
 
-```
+``` javascript
   // app/components/login-page.js
 
   export default Ember.Component.extend({
@@ -389,13 +389,13 @@ an Ember Service to keep functions and state related to authentication.
 Above, we injected **``authManager``** to which we delegate the
 **``authenticate()``** method. Let’s see what’s all this about:
 
-```
+```bash
   $ ember generate service auth-manager
 ```
 
 We make it look like this…
 
-```
+``` javascript
   // app/services/auth-manager.js
 
   export default Ember.Service.extend({
@@ -440,7 +440,7 @@ our API requests.
 As our data requests go through Ember Data, we will upgrade our adapter
 to make sure the access token is included in the XHR request headers:
 
-```
+``` javascript
   // app/adapter/application.js
 
   export default DS.RESTAdapter.extend({
@@ -465,7 +465,7 @@ For completeness’ sake, we will add the final touch. As visiting
 **``401 Unauthorized``** and turn it into a redirect to **``/login``**.
 The **``application``** route is a reasonable place to do that:
 
-```
+``` javascript
   // app/routes/application.js
 
   export default Ember.Route.extend({
