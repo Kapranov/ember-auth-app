@@ -824,8 +824,8 @@ this has been useful enough for you to apply on your projects!
 Remember the [source code is on Github](https://github.com/Kapranov/ember-auth-app):
 
 * branch **``master``** has the empty app and full tutorial
-* branch **``rest``** vs **``jsonapi``** has the app finished in part 1
-* branch **``rest-auth``** vs **``jsonapi-auth``** has the app finished here!
+* branch **``rest``** vs **``jsonapi``** has the app finished in **part 1**
+* branch **``rest-auth``** vs **``jsonapi-auth``** has the app **finished** here!
 
 For further information and docs, do head over to the **Ember Simple Auth**
 [website](http://ember-simple-auth.com/).
