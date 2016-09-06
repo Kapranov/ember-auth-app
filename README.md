@@ -59,8 +59,8 @@ typically enforcing a user to be logged in. When the user tries to
 access a specific protected **``URL``**, the app will prompt for credentials.
 
 These credentials can be checked against a number of identity providers,
-usually backend servers but also services like Facebook, Google, Github
-and many others.
+usually backend servers but also services like **Facebook**, **Google**,
+**Github** and many others.
 
 Implementing authentication in Ember may not be as straight-forward as
 it seems. You may have been dabbling with messy implementations or
@@ -68,8 +68,8 @@ outdated resources that are difficult to get running.
 
 ### Security as cross-cutting concern
 
-The aim of this article is to explore "best practices" for
-authentication in Ember 2.x. We will leverage the power of Services to
+The aim of this article is to explore **"best practices"** for
+authentication in **Ember 2.x**. We will leverage the power of Services to
 address security as a cross-cutting concern.
 
 Before flat-out jumping to a library, we will look into a hand-rolled
@@ -84,14 +84,14 @@ application. Yes, they are singletons.
 
 An **``Ember.Service``** is nothing more than an **``Ember.Object``**.
 The name is used as convention. If services are placed in a specific
-Ember CLI folder (**``app/services``**) they will be automatically
+**Ember CLI** folder (**``app/services``**) they will be automatically
 registered and available for injection in any other Ember object.
 
 These objects can:
 
-1. keep state around for the duration of an app (state won’t survive
-   page-reloads),
-2. be used from anywhere in the application
+**1**. keep state around for the duration of an app
+      (state won’t survive page-reloads),
+**2**. be used from anywhere in the application
 
 As such, they are ideal for cross-cutting concerns like logging or
 authentication.
