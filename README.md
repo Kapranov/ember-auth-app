@@ -720,7 +720,7 @@ great deal of complexity to Ember Simple Auth!
 
 Those of us familiar with [Devise](https://github.com/plataformatec/devise)
 (the Rails authentication solution) will recall the **``current_user``**
-variable available to Rails’ controllers.
+variable available to Rails controllers.
 
 We know a user has authenticated when the **``isAuthenticated``** property
 becomes **``true``**. The plan is to fetch the current user whenever that
