@@ -101,12 +101,12 @@ authentication.
 Whether your backend enables session-based authentication (stateful in
 the server) or token-based authentication (stateless in the server),
 from a client’s perspective that doesn’t change much. Both strategies
-have to send secret information with every backend/API request.
+have to send secret information with every **backend/API** request.
 
 In this article, we will create a token-based authentication system.
 Once we give the server valid credentials (username & password) it will
-return a token for us to use. This is basic OAuth2.
-Typically, username/password authentication gives us permanent and
+return a token for us to use. This is basic **OAuth2**.
+Typically, **username/password** authentication gives us permanent and
 unrestricted access to an app. On the other hand, tokens may give access
 to restricted functionality on the backend (i.e. authorization) and they
 may expire or be revoked.
@@ -144,15 +144,14 @@ think of! Fire up a terminal and run the following commands:
   $ ember g adapter application
 ```
 
-Done!
+**Done!**
 
 The next step is to include our **``secret-page``** component in
 the **``secret.hbs``** template.
 
 > Basically, the template will be used as a shim layer,
-> [a technique discussed
-> here](https://github.com/Kapranov/ember-auth-app/blob/master/should_we_use_controllers_in_ember.md)
-> whereby we only use templates to include a "top-level" component.
+> [a technique discussed here](https://github.com/Kapranov/ember-auth-app/blob/master/should_we_use_controllers_in_ember.md)
+> whereby we only use templates to include a **"top-level"** component.
 
 ```handlebars
   {{! app/templates/secret.hbs }}
@@ -186,7 +185,7 @@ We will create a very [simple and quick backend server](https://github.com/Kapra
   $ npm install body-parser --save-dev
 ```
 
-Great. We now open ``index.js`` and make it look exactly like this:
+**Great**. We now open **``index.js``** and make it look exactly like this:
 
 ``` javascript
   // server/index.js
@@ -212,7 +211,7 @@ Great. We now open ``index.js`` and make it look exactly like this:
 
 In order to load that data into our app, let’s update our
 [custom adapter](https://github.com/Kapranov/ember-auth-app/blob/master/custom_adapter.md).
-Simply adding the namespace for our API will suffice.
+Simply adding the namespace for our **API** will suffice.
 
 ``` javascript
   // app/adapters/application.js
@@ -242,9 +241,9 @@ Finally, we can launch our app!
 
 **``http://localhost:4200``** should display our secrets!
 
-> Ember CLI keeps including the Content Security Policies add-on by
+> **Ember CLI** keeps including the Content Security Policies add-on by
 > default. I personally find it silly to welcome someone to Ember with a
-> bunch of red stuff in their console "by default". In order to remove
+> bunch of red stuff in their console **"by default"**. In order to remove
 > these warnings, please read [How to Modify the Content Security Policy on a new Ember CLI app](https://github.com/Kapranov/ember-auth-app/blob/master/modify_content_security_policy.md).
 
 ### Protecting the State secrets from Evil
@@ -285,7 +284,7 @@ That makes sense! The question is, how does a user get hold of an access
 token?
 
 We will introduce an endpoint named **``/token``** through which clients can
-obtain a token (in order to query the API):
+obtain a token (in order to query the **API**):
 
 ``` javascript
   // server/index.js
@@ -324,7 +323,7 @@ obtain a token (in order to query the API):
 ```
 
 It would have been strange for this ludicrous sample app to have a
-sensible login/password combo! That’s right, anyone can obtain an access
+sensible **login/password** combo! That’s right, anyone can obtain an access
 token (the same token) with **``holymoly/somebs``**.
 
 On to Ember-land, my friends!
@@ -355,7 +354,7 @@ And the login page component…
   </form>
 ```
 
-This page will be used for username and password submission.
+This page will be used for **username** and **password** submission.
 
 The **``authenticate``** action will have to be declared in the component
 itself:
@@ -423,22 +422,22 @@ We make it look like this…
 
 The **``authenticate()``** method will call the backend at
 **``/token``**. Upon successful authentication, it will store
-the token in the ``accessToken`` property to use it in every
+the token in the **``accessToken``** property to use it in every
 subsequent backend request. We will see how this works in a minute.
 
 There’s also the **``isAuthenticated``** computed property that is a
 boolean-ized version of **``accessToken``**. Handy for using in templates.
 
-Lastly, **``invalidate()``** simply resets the access token. Any further
-requests to the API will result in a **``01 Unauthorized``** response since
-**``null``** is an invalid token.
+Lastly, **``invalidate()``** simply resets the **access token**. Any further
+requests to the **API** will result in a **``01 Unauthorized``** response since
+**``null``** is an **invalid token**.
 
 If we were to run our app at this point, we wouldn’t be able to retrieve
-the secret codes. Why? Well, we are not yet sending the access token in
-our API requests.
+the secret codes. Why? Well, we are not yet sending the **access token** in
+our **API** requests.
 
-As our data requests go through Ember Data, we will upgrade our adapter
-to make sure the access token is included in the XHR request headers:
+As our data requests go through **Ember Data**, we will upgrade our **adapter**
+to make sure the **access token** is included in the **XHR request headers**:
 
 ``` javascript
   // app/adapter/application.js
@@ -457,12 +456,12 @@ to make sure the access token is included in the XHR request headers:
   });
 ```
 
-if we logged in (in other words, received a token) we are now able to see
+if we logged in (in other words, received a **token**) we are now able to see
 the secret codes! Isn’t that super cool?!
 
 For completeness’ sake, we will add the final touch. As visiting
 **``/``** initially will have us logged out, we need to catch that
-**``401 Unauthorized``** and turn it into a redirect to **``/login``**.
+**``401 Unauthorized``** and turn it into a **redirect** to **``/login``**.
 The **``application``** route is a reasonable place to do that:
 
 ``` javascript
@@ -491,7 +490,7 @@ scenario.
 
 Our sample app is lacking proper:
 
-* pluggable authenticators/authorizers
+* pluggable **authenticators/authorizers**
 * error handling
 * events, interception and redirection
 * cross-tab communication
