@@ -44,6 +44,8 @@ more details
 
 Specify what it takes to deploy your app.
 
+<a href="https://emberigniter.com/">![Logo](https://emberigniter.com/images/logo.png)</a>
+
 ## Part I - Implementing Authentication with Ember Services
 
 Security is an essential aspect of most real-world applications.
