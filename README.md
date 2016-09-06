@@ -516,8 +516,8 @@ along the way? Let me know everything in the comments below!
 
 Getting authentication up and running in Ember can be overwhelming.
 
-Now that we understand how Services and token-based authentication work,
-we are ready to get started with a simple –yet powerful– framework
+Now that we understand how **Services** and **token-based authentication**
+work, we are ready to get started with a simple –yet powerful– framework
 called [Ember Simple Auth](http://ember-simple-auth.com/).
 
 In this episode, we will enhance our existing "Ember-Auth-App" application.
@@ -550,14 +550,14 @@ That’s it. We are ready to tackle the upgrade of our sample app!
 ### Ember-Auth-App version rest-auth
 
 To recap: Ember-Auth-App is a silly app that displays nuclear missile
-activation codes only to logged in users. It requests an OAuth2 token
+activation codes only to logged in users. It requests an **OAuth2** token
 from a [small embedded web server](https://github.com/Kapranov/ember-auth-app/blob/master/simple_and_quick_backend_server.md)
 in order to show the codes.
 
 The core concept in the authentication mechanism is the Ember Service.
-In Ember-Auth-App we called it ``authManager``. Ember Simple Auth (ESA)
-has its own service, named ``session``. We are going drop ours and use
-ESA’s – but we’ll keep the ``authManager`` variable name.
+In Ember-Auth-App we called it **``authManager``**. Ember Simple Auth (ESA)
+has its own service, named **``session``**. We are going drop ours and use
+ESA’s – but we’ll keep the **``authManager``** variable name.
 
 Bust the service!
 
@@ -567,7 +567,7 @@ Bust the service!
 
 Meanwhile, in the login page component…
 
-```javascript
+```js
   // app/components/login-page.js
 
   export default Ember.Component.extend({
@@ -588,18 +588,18 @@ Meanwhile, in the login page component…
   });
 ```
 
-(Note that we are now passing in an ``Authenticator``,
-``authenticator:oauth2``.)
+(Note that we are now passing in an **``Authenticator``**,
+**``authenticator:oauth2``**.)
 
-An ``Authenticator`` is defined by ESA as:
+An **``Authenticator``** is defined by ESA as:
 
 > The authenticator authenticates the session. The actual mechanism used
 > to do this might e.g. be posting a set of credentials to a server and
 > in exchange retrieving an access token, initiating authentication
-> against an external provider like Facebook etc. and depends on the
+> against an external provider like **Facebook** etc. and depends on the
 > specific authenticator.
 
-So let’s create our OAuth2 authenticator:
+So let’s create our **OAuth2** authenticator:
 
 ```bash
   $ mkdir app/authenticators
@@ -608,7 +608,7 @@ So let’s create our OAuth2 authenticator:
 
 With the following content:
 
-```javascript
+```js
   // app/authenticators/oauth2.js
 
   import OAuth2PasswordGrant from 'ember-simple-auth/authenticators/oauth2-password-grant';
@@ -616,26 +616,26 @@ With the following content:
   export default OAuth2PasswordGrant.extend();
 ```
 
-This strategy effectively replaces our ``Ember.$.ajax`` call to fetch
-the token at ``/token``! All the heavy work is now done by Ember Simple
+This strategy effectively replaces our **``Ember.$.ajax``** call to fetch
+the token at **``/token``**! All the heavy work is now done by Ember Simple
 Auth!
 
 > If you needed to override the token endpoint, here’s how:
 >
-> ```javascript
+> ```js
 >   // app/authenticators/oauth2.js
 >   export default OAuth2PasswordGrant.extend({
 >     serverTokenEndpoint: "/path/to/token"
 >   });
 
-At the moment, if no token is available when the ``secret`` route is
-accessed, a ``401 Unauthorized`` error will be thrown (you can probably
-notice it in your console). This will happen during the ``findAll`` call
-to the backend.
+At the moment, if no token is available when the **``secret``** route is
+accessed, a **``401 Unauthorized``** error will be thrown (you can probably
+notice it in your console). This will happen during the **``findAll``** call
+to the **backend**.
 
-By mixing in ``AuthenticatedRouteMixin`` we get that check for free:
+By mixing in **``AuthenticatedRouteMixin``** we get that check for free:
 
-```javascript
+```js
   // app/routes/secret.js
 
   import Ember from 'ember';
@@ -648,11 +648,11 @@ By mixing in ``AuthenticatedRouteMixin`` we get that check for free:
   });
 ```
 
-The application route was used to catch those errors and transition to
-the ``login`` route. With ESA, we simply mix in
-``ApplicationRouteMixin`` and it will be handled for us.
+The **application route** was used to catch those errors and transition to
+the **``login``** route. With ESA, we simply mix in **``ApplicationRouteMixin``**
+and it will be handled for us.
 
-```javascript
+```js
   // app/routes/application.js
 
   import Ember from 'ember';
@@ -661,10 +661,10 @@ the ``login`` route. With ESA, we simply mix in
   export default Ember.Route.extend(ApplicationRouteMixin);
 ```
 
-Finally, the application adapter had the ``authManager`` injected and
-sent an ``Authorization`` header. Again, ESA takes care of this for us:
+Finally, the **application adapter** had the **``authManager``** injected
+and sent an **``Authorization``** header. Again, ESA takes care of this for us:
 
-```javascript
+```js
   // app/adapter/application.js
 
   import RESTAdapter from 'ember-data/adapters/rest';
@@ -676,7 +676,7 @@ sent an ``Authorization`` header. Again, ESA takes care of this for us:
   });
 ```
 
-Which brings us to ``Authorizer``s. What are they?
+Which brings us to **``Authorizer``s**. What are they?
 
 > Authorizers use the session data aqcuired by an authenticator when
 > authenticating the session to construct authrorization data that can
@@ -684,8 +684,8 @@ Which brings us to ``Authorizer``s. What are they?
 > authorization mechanism the authorizer implements, that authorization
 > data might be an HTTP header, query string parameters, a cookie etc.
 
-In order to replace our ``Authorization: Bearer "some token"``
-header, we will leverage ESA’s ``OAuth2Bearer`` authorizer. Let’s
+In order to replace our **``Authorization: Bearer "some token"``**
+header, we will leverage ESA’s **``OAuth2Bearer``** authorizer. Let’s
 create:
 
 ```bash
@@ -695,7 +695,7 @@ create:
 
 With…
 
-```javascript
+```js
   // app/authorizers/application.js
 
   import OAuth2Bearer from 'ember-simple-auth/authorizers/oauth2-bearer';
@@ -705,39 +705,39 @@ With…
 
 That’s it for the upgrade!
 
-If we restart ``ember server`` and check it out… the application behaves
+If we restart **``ember server``** and check it out… the application behaves
 exactly the same! (Except it’s much more solid.) We are now delegating a
 great deal of complexity to Ember Simple Auth!
 
-> Any OAuth2 provider for my backend? Check these out for
+> Any **OAuth2**** provider for my backend? Check these out for
 >
-> * Rails:   [https://github.com/doorkeeper-gem/doorkeeper](https://github.com/doorkeeper-gem/doorkeeper)
-> * PHP:     [https://github.com/bshaffer/oauth2-server-php](https://github.com/bshaffer/oauth2-server-php)
-> * Express: [https://github.com/thomseddon/node-oauth2-server](https://github.com/thomseddon/node-oauth2-server)
+> * **Rails**:   [https://github.com/doorkeeper-gem/doorkeeper](https://github.com/doorkeeper-gem/doorkeeper)
+> * **PHP**:     [https://github.com/bshaffer/oauth2-server-php](https://github.com/bshaffer/oauth2-server-php)
+> * **Express**: [https://github.com/thomseddon/node-oauth2-server](https://github.com/thomseddon/node-oauth2-server)
 >
 
 ### Set the current user
 
 Those of us familiar with [Devise](https://github.com/plataformatec/devise)
-(the Rails authentication solution) will recall the ``current_user``
+(the Rails authentication solution) will recall the **``current_user``**
 variable available to Rails’ controllers.
 
-We know a user has authenticated when the ``isAuthenticated`` property
-becomes ``true``. The plan is to fetch the current user whenever that
+We know a user has authenticated when the **``isAuthenticated``** property
+becomes **``true``**. The plan is to fetch the current user whenever that
 happens.
 
-Let’s whip up a custom ``session`` service (as well as a ``User`` model
-to represent our user):
+Let’s whip up a custom **``session``** service (as well as a **``User``**
+model to represent our user):
 
 ```bash
   $ ember g service session
   $ ember g model user email:string
 ```
 
-We will extend ESA’s ``Session`` service and add a (computed) property
-called ``currentUser``:
+We will extend ESA’s **``Session``** service and add a (computed) property
+called **``currentUser``**:
 
-```javascript
+```js
   // app/services/session.js
 
   import Ember from 'ember';
@@ -759,17 +759,17 @@ called ``currentUser``:
 ```
 
 Since querying the backend for a user involves a promise, we return a
-``PromiseObject`` that will update our template when the promise
+**``PromiseObject``** that will update our template when the promise
 resolves.
 
-Neat! But… hold your horses! It’s not as if we had an API endpoint for
-the current logged in user.
+Neat! But… hold your horses! It’s not as if we had an **API** endpoint
+for the current logged in user.
 
 Typically this response depends on a cookie and a DB lookup. But let’s
 quickly create a dummy response, which for now will live at
-``/api/users``.
+**``/api/users``**.
 
-```javascript
+```js
   // server/index.js
 
   app.get('/api/users', function (req, res) {
@@ -783,7 +783,7 @@ quickly create a dummy response, which for now will live at
 It’s high time to make use of the feature! We will prepend a snippet to
 the secret page:
 
-```javascript
+```handlebars
   {{! app/templates/components/secret-page.hbs }}
 
   {{#if authManager.currentUser}}
@@ -802,7 +802,7 @@ the secret page:
 Naturally –you guessed it– we need to inject the service into our secret
 page component:
 
-```javascript
+```js
   // app/components/secret-page.js
 
   import Ember from 'ember';
@@ -823,14 +823,15 @@ this has been useful enough for you to apply on your projects!
 
 Remember the [source code is on Github](https://github.com/Kapranov/ember-auth-app):
 
-* branch  ``master`` has the app finished in part 1
-* branch ``rest`` ``jsonapi`` ``rest-auth`` ``jsonapi-auth`` has the app finished here!
+* branch  **``master``** has the app finished in part 1
+* branch **``rest``** **``jsonapi``** **``rest-auth``** **``jsonapi-auth``**
+  has the app finished here!
 
-For further information and docs, do head over to the Ember Simple Auth
+For further information and docs, do head over to the **Ember Simple Auth**
 [website](http://ember-simple-auth.com/).
 
-A future installment may bring authorization with external OAuth2
+A future installment may bring authorization with external **OAuth2**
 providers.
 
-Did this guide help you? Were you able to run the sample app? Let me
-know in the comments!
+Did this guide help you? Where you able to run the sample app?
+
