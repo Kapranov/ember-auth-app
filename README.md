@@ -98,16 +98,16 @@ authentication.
 
 ### Token-based authentication
 
-Whether your backend enables session-based authentication (stateful in
-the server) or token-based authentication (stateless in the server),
+Whether your backend enables **session-based authentication** (stateful in
+the server) or **token-based authentication** (stateless in the server),
 from a client’s perspective that doesn’t change much. Both strategies
 have to send secret information with every **backend/API** request.
 
-In this article, we will create a token-based authentication system.
-Once we give the server valid credentials (username & password) it will
+In this article, we will create a **token-based authentication** system.
+Once we give the server valid credentials (**username & password**) it will
 return a token for us to use. This is basic **OAuth2**.
 Typically, **username/password** authentication gives us permanent and
-unrestricted access to an app. On the other hand, tokens may give access
+unrestricted access to an app. On the other hand, **tokens** may give access
 to restricted functionality on the backend (i.e. authorization) and they
 may expire or be revoked.
 
