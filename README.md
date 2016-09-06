@@ -187,7 +187,7 @@ We will create a very [simple and quick backend server](https://github.com/Kapra
 
 **Great**. We now open **``index.js``** and make it look exactly like this:
 
-```javascript
+```js
   // server/index.js
 
   const bodyParser = require('body-parser');
@@ -213,7 +213,7 @@ In order to load that data into our app, let’s update our
 [custom adapter](https://github.com/Kapranov/ember-auth-app/blob/master/custom_adapter.md).
 Simply adding the namespace for our **API** will suffice.
 
-```javascript
+```js
   // app/adapters/application.js
 
   export default DS.RESTAdapter.extend({
@@ -223,7 +223,7 @@ Simply adding the namespace for our **API** will suffice.
 
 All ready now to load them in our route’s **``model()``** hook!
 
-```javascript
+```js
   // app/routes/secret.js
 
   export default Ember.Route.extend({
@@ -250,7 +250,7 @@ Finally, we can launch our app!
 
 First things first, let’s protect data at the source:
 
-```javascript
+```js
   // server/index.js
 
   const bodyParser = require('body-parser');
@@ -286,7 +286,7 @@ token?
 We will introduce an endpoint named **``/token``** through which clients can
 obtain a token (in order to query the **API**):
 
-```javascript
+```js
   // server/index.js
 
   const bodyParser = require('body-parser');
@@ -359,7 +359,7 @@ This page will be used for **username** and **password** submission.
 The **``authenticate``** action will have to be declared in the component
 itself:
 
-```javascript
+```js
   // app/components/login-page.js
 
   export default Ember.Component.extend({
@@ -394,7 +394,7 @@ Above, we injected **``authManager``** to which we delegate the
 
 We make it look like this…
 
-```javascript
+```js
   // app/services/auth-manager.js
 
   export default Ember.Service.extend({
@@ -439,7 +439,7 @@ our **API** requests.
 As our data requests go through **Ember Data**, we will upgrade our **adapter**
 to make sure the **access token** is included in the **XHR request headers**:
 
-```javascript
+```js
   // app/adapter/application.js
 
   export default DS.RESTAdapter.extend({
